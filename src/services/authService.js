@@ -7,6 +7,7 @@ const {
   loginValidation,
   forgetPasswordValidation,
 } = require("../validations/authValidations");
+const { client } = require('../redis');
 
 let blackListedTokens = [];
 
@@ -35,7 +36,9 @@ const login = async (data) => {
     expiresIn: expiresIn,
   });
 
-  console.log(token);
+  await client.del(`active_token_${user.id}`);
+  await client.set(`active_token_${user.id}`, token);
+
   return token;
 };
 
@@ -47,7 +50,6 @@ const getAuthenticatedUser = async (token) => {
 const forgetPassword = async (data) => {
   const validatedData = forgetPasswordValidation.parse(data);
   const user = await userRepository.findUserByEmail(validatedData.email);
-
   if (!user) {
     throw new Error("User not found");
   }
@@ -61,7 +63,7 @@ const forgetPassword = async (data) => {
   await userRepository.saveResetToken(user.id, resetToken);
 
   // Criar o link de redefinição de senha
-  const resetLink = `http://localhost:3001/auth/reset-password?token=${resetToken}`;
+  const resetLink = `${process.env.BASE_URL}/auth/reset-password?token=${resetToken}`;
 
   const transporter = nodemailer.createTransport({
     host: "sandbox.smtp.mailtrap.io",
@@ -87,35 +89,31 @@ const resetPassword = async (token, newPassword) => {
   let decoded;
 
   try {
-    // Verifique o token e decodifique
     decoded = jwt.verify(token, process.env.JWT_SECRET);
   } catch (error) {
     throw new Error("Invalid or expired token");
   }
 
-  // Encontre o usuário pelo ID decodificado
   const user = await userRepository.findUserById(decoded.userId);
 
   if (!user) {
     throw new Error("User not found");
   }
 
-  // Verifique se o token de redefinição ainda é válido
   if (!user.resetToken || user.resetToken !== token) {
     throw new Error("This reset link is no longer valid");
   }
 
-  // Crie o hash da nova senha
   const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-  // Atualize a senha do usuário
   await userRepository.updatePassword(user.id, hashedPassword);
 
-  // Remova o token após a redefinição da senha
   await userRepository.deleteToken(user.id);
+
 };
 
-const logout = async (token) => {
+const logout = async (token, id = null) => {
+  await client.del(`active_token_${id}`);
   blackListedTokens.push(token);
 };
 

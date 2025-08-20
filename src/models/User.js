@@ -20,10 +20,24 @@ const User = sequelize.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  emailVerifiedAt: {
+    type: DataTypes.DATE,
+    allowNull: true,
+    field: 'email_verified_at',
+    defaultValue: null,
+  },
   resetToken: {
     type: DataTypes.STRING,
     allowNull: true,
+    field: 'reset_token',
+    defaultValue: null,
   },
+}, {
+  tableName: 'users',
+  timestamps: true,
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',
+  underscored: true,
 });
 
 module.exports = User;

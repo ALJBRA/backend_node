@@ -1,0 +1,49 @@
+### Variables 
+@apiurl = http://localhost:3001
+
+### GET me
+GET {{apiurl}}/auth/me HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzM1MjQ5NjkyLCJleHAiOjE3MzUyNTE0OTJ9.5OW34QFVRx8-0S7L6R5yvotS7B5hiT6qmyYNssmUWMo
+
+### POST Register
+POST {{apiurl}}/auth/register HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer ACCESS-TOKEN
+
+{
+   "name": "Junior",
+   "email":"jr@email.com",
+   "password":"12341234"
+}
+
+### POST Login
+POST {{apiurl}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+   "email":"jr@email.com",
+   "password":"12341234"
+}
+
+### POST Forget
+POST {{apiurl}}/auth/forget_password HTTP/1.1
+Content-Type: application/json
+
+{
+   "email":"jr@email.com"
+}
+
+### POST Reset
+POST {{apiurl}}/auth/reset-password?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTczMjA2MTg3NSwiZXhwIjoxNzMyMDY1NDc1fQ.ALFuqqLLWRJ7grLEq-sTuCuValt_HMYZHU67i0nXOL0 HTTP/1.1
+Content-Type: application/json
+
+{
+   "newPassword":"12341234"
+}
+
+
+### POST logout
+POST {{apiurl}}/auth/logout HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzMyMDcyMTU4LCJleHAiOjE3MzIwNzM5NTh9.VFGhghDzWfLjHOU36jBGqLg2c-KdmO4q8aOiB13OvVI

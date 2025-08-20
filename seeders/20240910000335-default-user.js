@@ -10,8 +10,8 @@ module.exports = {
         name: process.env.DEFAULT_NAME,
         email: process.env.DEFAULT_EMAIL,
         password: hashedPassword,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        created_at: new Date(),
+        updated_at: new Date(),
       },
     ]);
   },

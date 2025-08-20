@@ -11,7 +11,6 @@ const sequelize = new Sequelize(
   }
 );
 
-// Testar a conexão com o banco de dados
 async function testConnection() {
   try {
     await sequelize.authenticate();
