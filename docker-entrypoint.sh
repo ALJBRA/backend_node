@@ -14,4 +14,9 @@ sh scripts/migrate.sh || {
 }
 
 echo "🚀 Iniciando aplicação..."
-exec npm run start
+
+if [ "$NODE_ENV" = "production" ]; then
+  exec npm run start
+else
+  exec npm run dev
+fi

@@ -4,3 +4,6 @@ services:
       - .env.test
     ports:
       - "3001:3001" 
+    volumes:
+      - .:/app
+      - /app/node_modules

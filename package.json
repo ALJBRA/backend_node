@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "DOTENV_CONFIG_PATH=.env.development npx nodemon -r dotenv/config ./src/server",
+    "dev": "DOTENV_CONFIG_PATH=.env.development node --watch -r dotenv/config ./src/server",
     "start": "DOTENV_CONFIG_PATH=.env.production node -r dotenv/config ./src/server",
     "createdb": "npx sequelize-cli db:create",
     "migratedb": "npx sequelize-cli db:migrate",

@@ -1,6 +1,6 @@
 ### Variables 
 @apiurl = http://localhost:3001
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU1NjYwNjYxLCJleHAiOjE3NTU2ODQ2NjF9.f78rVI6CMWwHZxm1mYXaUbmH8E51C9SO0r9ttWSgqug
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU1NzMyMjc2LCJleHAiOjE3NTU3NTYyNzZ9.LGjpxVd552Y5pJsqe_BwtJr59V-Y6C5YxzTX7v9TadE
 
 ### Health
 GET {{apiurl}}/health HTTP/1.1
