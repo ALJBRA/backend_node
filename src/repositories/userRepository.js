@@ -23,6 +23,13 @@ const updatePassword = async (userId, newPassword) => {
   );
 };
 
+const updateEmailVerifiedAt = async (userId) => {
+  return await User.update(
+    { emailVerifiedAt: new Date() },
+    { where: { id: userId } }
+  );
+};
+
 const deleteToken = async (userId) => {
   return await User.update({ resetToken: null }, { where: { id: userId } });
 };
@@ -33,5 +40,6 @@ module.exports = {
   findUserById,
   saveResetToken,
   updatePassword,
+  updateEmailVerifiedAt,
   deleteToken,
 };

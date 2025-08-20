@@ -1,6 +1,7 @@
 const app = require("./app");
 const { testConnection } = require("./db");
 const { connectRedis } = require("./redis");
+require("./services/email/emailWorker");
 const port = process.env.PORT || 3001;
 
 (async () => {

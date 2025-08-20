@@ -1,0 +1,6 @@
+services:
+  backend:
+    env_file:
+      - .env.test
+    ports:
+      - "3001:3001" 

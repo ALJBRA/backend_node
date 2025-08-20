@@ -27,35 +27,43 @@ Crie um arquivo `.env` na raiz do projeto com base no arquivo `.env.example`:
 
 ```env
 PORT=3001
-JWT_SECRET=mysecret
-JWT_EXPIRES=1800
+NODE_ENV=development
 
 # Base Urls
 BASE_URL=http://localhost:3001
+FRONT_URL=http://localhost:3000
 
-# Banco de dados
-DB_NAME=config
-DB_USER=root
-DB_PWD=devRoot
-DB_HOST=localhost
-DB_PORT=3306
-DB_DIALECT=mysql
+# Banco
+MYSQL_DATABASE=default
+MYSQL_ROOT_PASSWORD=root
+MYSQL_USER=testuser
+MYSQL_PASSWORD=testpass
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
+MYSQL_DIALECT=mysql
 
 # Redis
-REDIS_HOST=127.0.0.1
+REDIS_HOST=localhost
 REDIS_PORT=6379
-REDIS_PASSWORD=devRoot
+REDIS_PASSWORD=testpass
 
-#aes key. 32 characters
-AES_KEY=21QgUtU6VLUd79Zna354X49Qfe35xMYe
+# Segurança
+JWT_SECRET=mytestsecret
+JWT_EXPIRES=24000
+AES_KEY=12345678901234567890123456789012
 
-# Origem que pode acessar nosso backend
+# CORS
 CORS_ORIGIN=*
 
-MAILTRAP_USER=XXXXXXXXXXXXXX
-MAILTRAP_PASS=XXXXXXXXXXXXXX
+# Mailtrap
+MAILTRAP_HOST=smtp.mailersend.net
+MAILTRAP_PORT=587
+MAILTRAP_USER=user
+MAILTRAP_PASS=passwd
+EMAIL_FROM=user@domain.com
+SEND_EMAIL_ENABLED=false
 
-
+# Default Admin User
 DEFAULT_NAME=Admin
 DEFAULT_PASSWORD=Admin123
 DEFAULT_EMAIL=admin@email.com
@@ -70,13 +78,18 @@ DEFAULT_EMAIL=admin@email.com
 2. Instale as dependências:
    npm install
 
-3. Crie o banco de dados:
+3. Docker
+
+   - Produção: docker compose --env-file .env.production -f docker-compose.yml -f docker-compose.prod.override.yml up -d
+   - Desenvolvimento: docker compose --env-file .env.test -f docker-compose.yml -f docker-compose.test.override.yml up -d
+
+4. Crie o banco de dados:
    npm run createdb
 
-4. Execute as migrações:
+5. Execute as migrações:
    npm run migratedb
 
-5. Popule o banco de dados:
+6. Popule o banco de dados:
    npm run seeddb
 
 ## Uso
