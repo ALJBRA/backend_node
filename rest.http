@@ -1,6 +1,6 @@
 ### Variables 
 @apiurl = http://localhost:3001
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU1NzMyMjc2LCJleHAiOjE3NTU3NTYyNzZ9.LGjpxVd552Y5pJsqe_BwtJr59V-Y6C5YxzTX7v9TadE
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNzU1NzM5NzM1LCJleHAiOjE3NTU3NjM3MzV9.qfITKcfY53IzLCuRiwT55dxjanKmwkqZ4lmL8sG41Mc
 
 ### Health
 GET {{apiurl}}/health HTTP/1.1
@@ -13,8 +13,8 @@ Content-Type: application/json
 Authorization: Bearer ACCESS-TOKEN
 
 {
-   "name": "User01",
-   "email":"user01@gmail.com",
+   "name": "User02",
+   "email":"user02@gmail.com",
    "password":"12341234"
 }
 
@@ -27,7 +27,7 @@ POST {{apiurl}}/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-   "email":"user01@gmail.com",
+   "email":"user02@gmail.com",
    "password":"12341234"
 }
 
@@ -42,7 +42,7 @@ POST {{apiurl}}/auth/forget-password HTTP/1.1
 Content-Type: application/json
 
 {
-   "email":"user01@gmail.com"
+   "email":"user02@gmail.co"
 }
 
 ### Resetar a senha portal

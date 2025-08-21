@@ -8,7 +8,8 @@
     "createdb": "npx sequelize-cli db:create",
     "migratedb": "npx sequelize-cli db:migrate",
     "seeddb": "npx sequelize-cli db:seed:all",
-    "setupdb": "npm run createdb && npm run migratedb && npm run seeddb"
+    "setupdb": "npm run createdb && npm run migratedb && npm run seeddb",
+    "test": "DOTENV_CONFIG_PATH=.env.development NODE_ENV=development vitest --run"
   },
   "keywords": [],
   "author": "",
@@ -30,5 +31,10 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "zod": "^4.0.17"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "supertest": "^7.1.4",
+    "vitest": "^3.2.4"
   }
 }

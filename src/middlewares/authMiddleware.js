@@ -51,7 +51,6 @@ module.exports = async (req, res, next) => {
 
     return next();
   } catch (error) {
-    console.error("JWT verification error:", error);
     return ApiResponse.error(
       res,
       "Unauthorized",

@@ -110,6 +110,10 @@ npm run createdb: Cria o banco de dados
 npm run migratedb: Executa as migrações do banco de dados
 npm run seeddb: Popula o banco de dados com dados iniciais
 
+## Tests
+
+docker compose exec backend npm run test
+
 # Contribuindo
 
 Sinta-se à vontade para abrir issues e pull requests. Agradecemos suas contribuições!
